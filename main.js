@@ -1,10 +1,10 @@
 
 // API
-API_KEY = 'api_key=0de926224136493ac1649576d602030e';
+const API_KEY = process.env.API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
-const API_URL = BASE_URL + '/discover/movie?include_adult=false&sort_by=popularity.desc&' + API_KEY;
+const API_URL = `${BASE_URL}/discover/movie?include_adult=false&sort_by=popularity.desc&api_key=${API_KEY}`;
 const IMG_URL = "https://image.tmdb.org/t/p/w500";
-const searchURL = BASE_URL + '/search/movie?' + API_KEY;
+const searchURL = `${BASE_URL}/search/movie?api_key=${API_KEY}`;
 
 const main = document.getElementById('main');
 const form = document.getElementById('form');
@@ -17,8 +17,15 @@ function getMovies(url) {
     fetch(url)
         .then(res => res.json())
         .then(data => {
-            console.log(data.results);
-            showMovies(data.results);
+            if (data.results) {
+                console.log(data.results);
+                showMovies(data.results);
+            } else {
+                console.error("No results found");
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching data:", error);
         });
 }
 
