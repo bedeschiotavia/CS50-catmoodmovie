@@ -12,6 +12,15 @@ const search = document.getElementById('search');
 
 getMovies(API_URL);
 
+const moodSelect = document.getElementById('moodSelect');
+moodSelect.addEventListener('change', () => {
+    const selectedMood = moodSelect.value;
+    if (selectedMood) {
+        const moodURL = `${BASE_URL}/discover/movie?sort_by=popularity.desc&with_genres=${selectedMood}&api_key=${API_KEY}`;
+        getMovies(moodURL);
+    }
+});
+
 // Data from TMDB
 function getMovies(url) {
     fetch(url)
@@ -31,6 +40,7 @@ function getMovies(url) {
 
 // Show results
 function showMovies(data) {
+    const main = document.getElementById('main');
     main.innerHTML = '';
 
     data.forEach(movie => {

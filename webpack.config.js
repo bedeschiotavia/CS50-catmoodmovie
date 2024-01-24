@@ -3,7 +3,7 @@ const Dotenv = require('dotenv-webpack');
 const path = require('path');
 
 module.exports = {
-  mode: 'development', // or 'production'
+  mode: 'development',
   entry: './main.js',
   output: {
     filename: 'main.bundle.js',
