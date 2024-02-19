@@ -12,13 +12,15 @@ const search = document.getElementById('search');
 
 getMovies(API_URL);
 
-const moodSelect = document.getElementById('moodSelect');
-moodSelect.addEventListener('change', () => {
-    const selectedMood = moodSelect.value;
-    if (selectedMood) {
-        const moodURL = `${BASE_URL}/discover/movie?sort_by=popularity.desc&with_genres=${selectedMood}&api_key=${API_KEY}`;
+const moodButtons = document.querySelectorAll('.mood-btn');
+moodButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const selectedMoodGenre = button.getAttribute('data-genre');
+        const selectedMoodSimilar = button.getAttribute('data-similar');//Stopped here!
+        const moodURL = `${BASE_URL}/discover/movie?sort_by=popularity.desc&with_genres=${selectedMoodGenre}&api_key=${API_KEY}---${selectedMoodSimilar}`;
         getMovies(moodURL);
-    }
+        console.log(moodURL);
+    });
 });
 
 // Data from TMDB
@@ -27,8 +29,8 @@ function getMovies(url) {
         .then(res => res.json())
         .then(data => {
             if (data.results) {
-                console.log(data.results);
                 showMovies(data.results);
+                console.log(data.results);
             } else {
                 console.error("No results found");
             }
@@ -51,7 +53,7 @@ function showMovies(data) {
             <img src="${IMG_URL + poster_path}" alt="${title}" >
             <div class="movie-info">
                 <h3>${title}</h3>
-                <span class="${getColor(vote_average)}">${vote_average}</span>
+                <span class="${getColor(vote_average)}">${vote_average.toFixed()}</span>
             </div>
             <div class="overview">
                 <h3>Overview</h3>
@@ -60,13 +62,14 @@ function showMovies(data) {
         `;
         main.appendChild(movieElement);
     });
+    
 }
 
 // Change color vote average
 function getColor(vote) {
-    if (vote >= 8) {
+    if (vote.toFixed() >= 7) {
         return 'green';
-    } else if (vote >= 5) {
+    } else if (vote.toFixed() >= 4) {
         return 'yellow';
     } else {
         return 'red';

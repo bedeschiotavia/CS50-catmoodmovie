@@ -2,21 +2,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="main.css" defer>
     <title>CatMoodMovie</title>
 </head>
 <body>
     <header>
         <img class="logo" src="img/logocatmoodmovie.png" alt="catmoodmovie logo">
         <form id="form">
-            <select id="moodSelect">
-                <option value="" selected disabled>Select Mood</option>
-                <option value="28">Action</option>
-                <option value="35">Comedy</option>
-                <option value="10749">Romance</option>
-                <option value="12">Adventure</option>
-                <option value="16">Animation</option>
-            </select>
+            <button class="mood-btn" data-genre="28" data-similar="1214314">Adrenaline</button>
+            <button class="mood-btn" data-genre="35">Happy</button>
+            <button class="mood-btn" data-genre="10749">Romantic</button>
+            <button class="mood-btn" data-genre="12">Adventurous</button>
+            <button class="mood-btn" data-genre="16">Kidsh</button>
         </form>
     </header>
 
