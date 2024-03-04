@@ -15,10 +15,12 @@ getMovies(API_URL);
 const moodButtons = document.querySelectorAll('.mood-btn');
 moodButtons.forEach(button => {
     button.addEventListener('click', () => {
+        const scrollElement = document.getElementById('main')
         const selectedMoodGenre = button.getAttribute('data-genre');
-        const selectedMoodSimilar = button.getAttribute('data-similar');//Stopped here!
-        const moodURL = `${BASE_URL}/discover/movie?sort_by=popularity.desc&with_genres=${selectedMoodGenre}&api_key=${API_KEY}---${selectedMoodSimilar}`;
+        const selectedMoodKeyword = button.getAttribute('data-keyword');
+        const moodURL = `${BASE_URL}/discover/movie?sort_by=popularity.desc&with_genres=${selectedMoodGenre}&with_keywords=${selectedMoodKeyword}&api_key=${API_KEY}`;
         getMovies(moodURL);
+        scrollElement.scrollIntoView({behavior: 'smooth'});
         console.log(moodURL);
     });
 });
