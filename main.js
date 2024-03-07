@@ -66,7 +66,6 @@ function getMovies(url) {
                     next.classList.remove('disabled');
                 }
 
-                scrollElement.scrollIntoView({behavior: 'smooth'});
 
             } else {
                 console.error("No results found");
@@ -148,6 +147,7 @@ function pageCall(page){
     if(key[0] != 'page') {
         let url = lastUrl + '&page='+page;
         getMovies(url);
+        scrollElement.scrollIntoView({behavior: 'smooth'});
     }else {
         key[1] = page.toString();
         let joinA = key.join('=');
@@ -155,6 +155,7 @@ function pageCall(page){
         let joinB = queryParams.join('&');
         let url = urlSplit[0] +'?'+joinB;
         getMovies(url);
+        scrollElement.scrollIntoView({behavior: 'smooth'});
     }
 
 }
