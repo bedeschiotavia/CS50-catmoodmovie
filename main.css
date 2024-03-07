@@ -202,6 +202,35 @@ main {
     transform: translateY(0);
 }
 
+/*Pagination*/
+
+.pagination {
+    display:flex;
+    margin: 20px;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-size:1.8rem;
+    color: var(--light-pink);
+}
+
+.page {
+    padding: 10px;
+    cursor: pointer;
+    font-size:2.8rem;
+}
+
+.page.disabled {
+    cursor: not-allowed;
+    color: var(--dark-purple);
+}
+
+.page span,
+.current span {
+    background-color: var(--secondary-color);
+}
+
+
 /*Footer*/
 
 footer {
