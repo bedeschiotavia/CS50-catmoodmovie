@@ -17,7 +17,6 @@ module.exports = {
         { from: './index.html', to: './index.html' },
         { from: './main.css', to: './main.css' },
         { from: './img', to: './img' },
-        { from: './main.js', to: './main.js' },
       ],
     }),
   ],
