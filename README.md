@@ -4,6 +4,9 @@
 
 This is a web application developed as the final project for the CS50 course. The application allows users to discover movies based on their current mood, using the TMDB (The Movie Database) API.
 
+![Mockup CatMoodMovie](https://github.com/bedeschiotavia/catmoodmovie/assets/74593495/906b3b9a-e2e8-4de5-8b1f-9357e35ad16b)
+
+
 ## Features
 
 - **Mood Selection:** Users can choose their mood from a range of options presented in a playful "Cat Scale" format.
